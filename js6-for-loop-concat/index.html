@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let text = "";
+
+        for (let i = 1; i <= 10; i++) {
+            text += i + " ";
+        }
+        console.log(text);
+
+
+        // 1 - imprime os numeros de 1 a 10 separados por virgula
+        //      1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+        //      atencao, o ultimo nao tem virgula...
+
+
+        // 2 - imprime a soma de todos os numeros de 1 a 10
+        //     55
+
+
+        // 3 - imprime a soma de todos os numeros de 1 a 10
+        //     formatando da seguinte maneira
+        //     1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55
+
+
+        // EXERCICIO 1
+        let numbersText = "";
+
+        // for (let i = 1; i <= 10; i++) {
+        //     if (i < 10) {
+        //         numbersText += i + ", ";
+        //     } else {
+        //         numbersText += i;
+        //     }
+        //     console.log(i)
+        //     console.log(numbersText)
+        // }
+        // console.log(numbersText);
+
+        for (let i = 1; i <= 10; i++) {
+            if (i > 1) {
+                numbersText += ", ";
+            }
+            numbersText += i;
+        }
+        console.log(numbersText);
+
+    </script>
+
+</body>
+
+</html>

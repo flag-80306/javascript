@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // let counter = 0;
+        // while (counter < 10) {
+        //     counter++;
+        // }
+
+        for (let i = 0; i < 10; i++) {
+
+        }
+
+        // 1 - Imprime todos os numeros entre 0 e 99 com um ciclo for
+        // 2 - Imprime todos os numeros entre 1 e 20 com um ciclo for
+        // 3 - FizzBuzz (entre 1 e 100)
+        // 1
+        // 2
+        // Fizz
+        // 4
+        // Buzz
+        // Fizz
+        // 7
+        // 8
+        // Fizz
+        // Buzz
+        // 11
+        // Fizz
+        // 13
+        // 14
+        // FizzBuzz
+        // ...
+
+
+        // EXERCICIO 1
+        // for (let i = 0; i < 100; i++) {
+        //     console.log(i);
+        // }
+
+
+        // EXERCICIO 2
+        // for (let i = 1; i <= 20; i++) {
+        //     console.log(i);
+        // }
+
+
+        // EXERCICIO 3
+        // for (let i = 1; i <= 100; i++) {
+        //     if (i % 15 == 0) {
+        //         console.log("FIZZBUZZ");
+        //     } else if (i % 5 == 0) {
+        //         console.log("BUZZ");
+        //     } else if (i % 3 == 0) {
+        //         console.log("FIZZ");
+        //     } else {
+        //         console.log(i)
+        //     }
+        // }
+
+        for (let i = 1; i <= 100; i++) {
+            let message = "";
+            if (i % 3 == 0) {
+                message += "FIZZ";
+            }
+            if (i % 5 == 0) {
+                message += "BUZZ";
+            }
+
+            if (message == "") {
+                console.log(i);
+            } else {
+                console.log(message)
+            }
+        }
+    </script>
+</body>
+
+</html>

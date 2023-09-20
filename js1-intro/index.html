@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1 id="textHeader">Ola a todos</h1>
+    <p id="higherNumber"></p>
+    <script>
+        // DOM -> Document Object Model
+
+        const textHeader = document.querySelector("#textHeader");
+
+        console.log(textHeader);
+
+        textHeader.textContent = "Mudei o texto...";
+        textHeader.style.color = "#F0F";
+
+        // Colocar no browser o valor mais alto de entre as 2 variaveis...
+        // const num1 = 54;
+        // const num2 = 23;
+
+        // const higherNumber = document.querySelector("#higherNumber");
+
+        // if (num1 > num2) {
+        //     higherNumber.textContent = num1;
+        // } else {
+        //     higherNumber.textContent = num2;
+        // }
+
+
+        // SOLUCAO 1::
+
+        const num1 = 5;
+        const num2 = 7;
+        const num3 = 6;
+
+        const higherNumber = document.querySelector("#higherNumber");
+
+        if (num1 > num2) {
+            if (num1 > num3) {
+                higherNumber.textContent = num1;
+            } else {
+                higherNumber.textContent = num3;
+            }
+        } else {
+            if (num2 > num3) {
+                higherNumber.textContent = num2;
+            } else {
+                higherNumber.textContent = num3;
+            }
+        }
+
+        // SOLUCAO 2::
+        // const num1 = 5;
+        // const num2 = 7;
+        // const num3 = 6;
+
+        // const higherNumber = document.querySelector("#higherNumber");
+
+        // let valorMaisAlto = num1;
+
+        // if (num2 > valorMaisAlto) {
+        //     valorMaisAlto = num2;
+        // }
+
+        // if (num3 > valorMaisAlto) {
+        //     valorMaisAlto = num3;
+        // }
+
+        // higherNumber.textContent = valorMaisAlto;
+
+    </script>
+    <h2>FIM DA PAGINA!!!!</h2>
+</body>
+
+</html>

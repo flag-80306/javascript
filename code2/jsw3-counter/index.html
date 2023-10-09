@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        Counter 1: <span id="counter1Text">0</span><br>
+        Counter 2: 0
+    </div>
+    <button>DOWN 10</button>
+    <button>DOWN</button>
+    <button id="buttonUp">UP</button>
+    <button>UP 10</button>
+
+    <div>
+        <input type="radio" name="radio1" checked>Counter 1<br>
+        <input type="radio" name="radio1">Counter 2
+    </div>
+
+    <script>
+        const buttonUp = document.querySelector("#buttonUp");
+        const counter1Text = document.querySelector("#counter1Text");
+
+        let counter1 = 0;
+
+        buttonUp.addEventListener("click", function () {
+            counter1++;
+            counter1Text.textContent = counter1;
+        })
+    </script>
+</body>
+
+</html>

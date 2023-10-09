@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #logo {
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #logo>span {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="logo">🎄<span>H</span>elders<span>L</span>essons</h1>
+    <h3>User Info:</h3>
+    <div>
+        Name: <span id="userName"></span><br>
+        Age: <span id="userAge"></span><br>
+        City: <span id="userCity"></span>
+    </div>
+    <script>
+
+        const user = {
+            name: "Joe",
+            age: 30,
+            city: "Lisbon"
+        };
+
+        const userName = document.querySelector("#userName");
+        const userAge = document.querySelector("#userAge");
+        const userCity = document.querySelector("#userCity");
+
+        console.log(user);
+        console.log(userName);
+
+        userName.textContent = user.name;
+        userAge.textContent = user.age;
+        userCity.textContent = user.city;
+
+        userAge.style.color = "green";
+    </script>
+</body>
+
+</html>

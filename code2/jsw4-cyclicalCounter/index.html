@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        Counter: <span id="counterText">0</span>
+    </div>
+    <button id="buttonDown">DOWN</button>
+    <button id="buttonUp">UP</button>
+
+    <script>
+        const counterText = document.querySelector("#counterText");
+        const buttonDown = document.querySelector("#buttonDown");
+        const buttonUp = document.querySelector("#buttonUp");
+
+        let counter = 0;
+
+        buttonUp.addEventListener("click", function () {
+            counter += 1;
+            counterText.textContent = counter;
+        });
+
+        // 
+    </script>
+</body>
+
+</html>

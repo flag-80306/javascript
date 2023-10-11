@@ -38,6 +38,18 @@
             } else {
                 alert("This should not have happened!");
             }
+
+            if (counter1 <= -10) {
+                counter1Text.style.color = "red";
+            } else if (counter1 < 0) {
+                counter1Text.style.color = "yellow";
+            } else if (counter1 == 0) {
+                counter1Text.style.color = "black";
+            } else if (counter1 >= 10) {
+                counter1Text.style.color = "lime";
+            } else if (counter1 > 0) {
+                counter1Text.style.color = "cyan";
+            }
         }
 
         const buttonDown10 = document.querySelector("#buttonDown10");
@@ -64,6 +76,7 @@
         buttonUp10.addEventListener("click", function () {
             updateValue(10);
         })
+
 
         // Exercicio
         // O texto do contador deve ser preto quando zero

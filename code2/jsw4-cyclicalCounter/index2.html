@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        Counter: <span id="counterText">0</span>
+    </div>
+    <button id="buttonDown">DOWN</button>
+    <button id="buttonUp">UP</button>
+
+    <script>
+        function updateUI() {
+            counterText.textContent = counter;
+
+            buttonDown.disabled = false;
+            buttonUp.disabled = false;
+            if (counter == 0) {
+                buttonDown.disabled = true;
+            } else if (counter == 10) {
+                buttonUp.disabled = true;
+            }
+        }
+
+        const counterText = document.querySelector("#counterText");
+        const buttonDown = document.querySelector("#buttonDown");
+        const buttonUp = document.querySelector("#buttonUp");
+
+        let counter = 5;
+        updateUI();
+
+        buttonUp.addEventListener("click", function () {
+            if (counter < 10) {
+                counter += 1;
+            }
+            updateUI();
+        });
+
+        buttonDown.addEventListener("click", function () {
+            if (counter > 0) {
+                counter -= 1;
+            }
+            updateUI();
+        });
+
+        // EXERCICIO
+        // apenas mostra os numeros entre 0 e 10
+        // por exemplo se ja estiver no 10 o botao UP nao produz efeito nenhum
+        // se estiver no 0 o botao DOWN nao produz efeito tambem
+    </script>
+</body>
+
+</html>

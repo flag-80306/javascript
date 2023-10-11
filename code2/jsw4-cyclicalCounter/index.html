@@ -23,10 +23,23 @@
 
         buttonUp.addEventListener("click", function () {
             counter += 1;
+            if (counter > 10) {
+                counter = 0;
+            }
             counterText.textContent = counter;
         });
 
-        // 
+        buttonDown.addEventListener("click", function () {
+            counter -= 1;
+            if (counter < 0) {
+                counter = 10;
+            }
+            counterText.textContent = counter;
+        });
+
+        // apenas mostra numetros entre 0 e 10
+        // UP a partir do 10 volta para o 0
+        // DOWN a partir do 0 vai par ao 10
     </script>
 </body>
 

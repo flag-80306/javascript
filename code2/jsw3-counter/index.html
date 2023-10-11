@@ -10,28 +10,68 @@
 <body>
     <div>
         Counter 1: <span id="counter1Text">0</span><br>
-        Counter 2: 0
+        Counter 2: <span id="counter2Text">0</span><br>
     </div>
-    <button>DOWN 10</button>
-    <button>DOWN</button>
+    <button id="buttonDown10">DOWN 10</button>
+    <button id="buttonDown">DOWN</button>
     <button id="buttonUp">UP</button>
-    <button>UP 10</button>
+    <button id="buttonUp10">UP 10</button>
 
     <div>
-        <input type="radio" name="radio1" checked>Counter 1<br>
-        <input type="radio" name="radio1">Counter 2
+        <label>
+            <input type="radio" name="rgChooseCounter" id="radio1" checked>Counter 1
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="rgChooseCounter" id="radio2">Counter 2
+        </label>
     </div>
 
     <script>
+        function updateValue(value) {
+            if (radio1.checked) {
+                counter1 += value;
+                counter1Text.textContent = counter1;
+            } else if (radio2.checked) {
+                counter2 += value;
+                counter2Text.textContent = counter2;
+            } else {
+                alert("This should not have happened!");
+            }
+        }
+
+        const buttonDown10 = document.querySelector("#buttonDown10");
+        const buttonDown = document.querySelector("#buttonDown");
         const buttonUp = document.querySelector("#buttonUp");
+        const buttonUp10 = document.querySelector("#buttonUp10");
         const counter1Text = document.querySelector("#counter1Text");
+        const counter2Text = document.querySelector("#counter2Text");
+        const radio1 = document.querySelector("#radio1");
+        const radio2 = document.querySelector("#radio2");
 
         let counter1 = 0;
+        let counter2 = 0;
 
-        buttonUp.addEventListener("click", function () {
-            counter1++;
-            counter1Text.textContent = counter1;
+        buttonDown10.addEventListener("click", function () {
+            updateValue(-10);
         })
+        buttonDown.addEventListener("click", function () {
+            updateValue(-1);
+        })
+        buttonUp.addEventListener("click", function () {
+            updateValue(1);
+        })
+        buttonUp10.addEventListener("click", function () {
+            updateValue(10);
+        })
+
+        // Exercicio
+        // O texto do contador deve ser preto quando zero
+        // azul se for 1 ou superior
+        // verde se for 10 ou superior
+        // amarelo se for -1 ou inferior
+        // vemelhor se for -10 ou inferior
+
     </script>
 </body>
 

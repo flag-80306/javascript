@@ -16,12 +16,25 @@
 
 <body>
     <div id="box"></div>
-    <button>NEXT</button>
+    <button id="buttonNext">NEXT</button>
 
     <script>
-        // TPC
-        // ao clicar no botao next a div muda para a cor seguinte...
-        // R -> G -> B -> R -> ...
+        const box = document.querySelector("#box");
+        const buttonNext = document.querySelector("#buttonNext");
+
+        const colors = [
+            "red", "green", "blue", "pink", "yellow", "lime"
+        ]
+
+        let counter = 0;
+        buttonNext.addEventListener("click", function () {
+            counter += 1;
+            if (counter == colors.length) {
+                counter = 0;
+            }
+            box.textContent = counter;
+            box.style.backgroundColor = colors[counter];
+        });
     </script>
 </body>
 

@@ -5,19 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #mainImage {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+            background-color: pink;
+        }
+    </style>
 </head>
 
 <body>
-    <img id="mainImage" src="https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png">
+    <img id="mainImage" src="">
+    <button id="buttonPrevious">Previous</button>
     <button id="buttonNext">Next</button>
     <script>
-        // https://upload.wikimedia.org/wikipedia/pt/0/0b/Marge_Simpson.png
+        function updateImage() {
+            mainImage.src = images[counter];
+        }
+
+        const images = [
+            "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png",
+            "https://static.globalnoticias.pt/dn/image.jpg?brand=DN&type=generate&name=dn2015_detalhe_topo&id=5401162&source=ng7620160.jpg&w=800&h=450&t=20160921140900",
+            "https://www.hollywoodreporter.com/wp-content/uploads/2016/02/simp2006_homerarmscrossed_f_hires2_-_h_2016.jpg?w=1296",
+            "https://w.forfun.com/fetch/88/8879ac2b3a41a657ede38b4dc1fef5bb.jpeg"
+        ]
 
         const mainImage = document.querySelector("#mainImage");
         const buttonNext = document.querySelector("#buttonNext");
+        const buttonPrevious = document.querySelector("#buttonPrevious");
+
+        let counter = 0;
+        updateImage();
 
         buttonNext.addEventListener("click", function () {
-            mainImage.src = "https://upload.wikimedia.org/wikipedia/pt/0/0b/Marge_Simpson.png";
+            counter += 1;
+            if (counter > images.length - 1) {
+                counter = 0;
+            }
+            updateImage();
+        });
+
+        buttonPrevious.addEventListener("click", function () {
+            counter -= 1;
+            if (counter < 0) {
+                counter = images.length - 1;
+            }
+            updateImage();
         });
     </script>
 </body>

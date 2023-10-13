@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="mainImage" src="https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png">
+    <button id="buttonNext">Next</button>
+    <script>
+        // https://upload.wikimedia.org/wikipedia/pt/0/0b/Marge_Simpson.png
+
+        const mainImage = document.querySelector("#mainImage");
+        const buttonNext = document.querySelector("#buttonNext");
+
+        buttonNext.addEventListener("click", function () {
+            mainImage.src = "https://upload.wikimedia.org/wikipedia/pt/0/0b/Marge_Simpson.png";
+        });
+    </script>
+</body>
+
+</html>

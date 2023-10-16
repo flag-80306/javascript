@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #passwordStrengthDisplay {
+            display: flex;
+        }
+
+        #passwordStrengthDisplay>div {
+            width: 50px;
+            height: 10px;
+            border: solid 1px black;
+        }
+
+        .bgRed {
+            background-color: red;
+        }
+
+        .bgOrange {
+            background-color: orange;
+        }
+
+        .bgYellow {
+            background-color: yellow;
+        }
+
+        .bgGreen {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="passwordField">
+    <div>Password strength: <span id="passwordStrengthSpan"></span></div>
+    <div id="passwordStrengthDisplay">
+        <div id="pass1"></div>
+        <div id="pass2"></div>
+        <div id="pass3"></div>
+        <div id="pass4"></div>
+    </div>
+    <script>
+        function isNumberOrLetter(char) {
+            const sample = "0123456789abcdefghijklmnopqrstuvwxyz";
+            return sample.includes((char + "").toLowerCase());
+        }
+
+        // return 0 -> 3
+        function passwordStrength(password) {
+            if (password.length < 6 || password.length > 15) {
+                return 0;
+            }
+
+            let specialCharCounter = 0;
+            for (let i = 0; i < password.length; i++) {
+                const char = password[i];
+                if (!isNumberOrLetter(char)) {
+                    specialCharCounter++;
+                }
+            }
+
+            if (specialCharCounter >= 4) {
+                return 3;
+            } else if (specialCharCounter >= 1) {
+                return 2;
+            } else {
+                return 1;
+            }
+        }
+
+        const passwordField = document.querySelector("#passwordField");
+        const passwordStrengthSpan = document.querySelector("#passwordStrengthSpan");
+        const pass1 = document.querySelector("#pass1");
+        const pass2 = document.querySelector("#pass2");
+        const pass3 = document.querySelector("#pass3");
+        const pass4 = document.querySelector("#pass4");
+
+        passwordField.addEventListener("input", function () {
+            const level = passwordStrength(passwordField.value);
+            passwordStrengthSpan.textContent = level;
+
+            if (level == 0) {
+                pass1.style.backgroundColor = "red"
+                pass2.style.backgroundColor = "white"
+                pass3.style.backgroundColor = "white"
+                pass4.style.backgroundColor = "white"
+            } else if (level == 1) {
+                pass1.style.backgroundColor = "orange"
+                pass2.style.backgroundColor = "orange"
+                pass3.style.backgroundColor = "white"
+                pass4.style.backgroundColor = "white"
+            } else if (level == 2) {
+                pass1.style.backgroundColor = "yellow"
+                pass2.style.backgroundColor = "yellow"
+                pass3.style.backgroundColor = "yellow"
+                pass4.style.backgroundColor = "white"
+            } else if (level == 3) {
+                pass1.style.backgroundColor = "green"
+                pass2.style.backgroundColor = "green"
+                pass3.style.backgroundColor = "green"
+                pass4.style.backgroundColor = "green"
+            }
+
+            // const strengthDivs = document.querySelectorAll("#passwordStrengthDisplay > div")
+            // for (let i = 0; i < strengthDivs.length; i++) {
+            //     const div = strengthDivs[i];
+            // }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="buttonCatchEmAll">CATCH EM ALL!</button>
+    <ul id="pokemonNames">
+    </ul>
+    <script>
+
+        const buttonCatchEmAll = document.querySelector("#buttonCatchEmAll");
+        const pokemonNames = document.querySelector("#pokemonNames");
+
+        buttonCatchEmAll.addEventListener("click", function () {
+
+
+            // PROMISES
+            const url = "https://pokeapi.co/api/v2/pokemon";
+            fetch(url).then(function (response) {
+
+                response.json().then(function (result) {
+
+                    for (let i = 0; i < result.results.length; i++) {
+                        pokemonNames.innerHTML += "<li>" + result.results[i].name + "</li>"
+                    }
+
+                })
+
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

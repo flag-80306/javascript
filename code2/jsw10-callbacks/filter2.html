@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const people = [
+            {
+                name: "Joe",
+                age: 40
+            },
+            {
+                name: "Bob",
+                age: 20
+            },
+            {
+                name: "Moe",
+                age: 12
+            },
+            {
+                name: "Homer",
+                age: 3
+            }
+        ];
+        const youngPeople = [];
+
+        for (let i = 0; i < people.length; i++) {
+            if (people[i].age < 18) {
+                youngPeople.push(people[i]);
+            }
+        }
+        console.log(youngPeople);
+
+
+    </script>
+</body>
+
+</html>

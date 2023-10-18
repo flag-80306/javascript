@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>COMPANY</th>
+        </tr>
+    </table>
+
+    <script>
+        fetch("https://swapi.dev/api/films/1")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (result) {
+                console.log("CORreU tUDO BEM")
+                console.log(result[0].company.name);
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+        // Usa a API https://jsonplaceholder.typicode.com/
+        // Coloca numa "tabela" ou outro elemento semelhante
+        // o nome de todos os utilizadores, email, e nome da empresa
+    </script>
+
+</body>
+
+</html>

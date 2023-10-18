@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="loadingIndicator">Loading...</div>
+    <ul id="listOfStarWarsCharacters"></ul>
+    <script>
+        // EXERCICIO 1:
+        // colocar todos os personagens de STAR WARS numa list como no exemplo acima
+        // mas sem botao... mal a pagina arranque
+        // url para os personagens: https://swapi.dev/api/people
+
+        // EXERCICIO 2:
+        // colocar apenas os personagens com altura superior a 180
+
+        const listOfStarWarsCharacters = document.querySelector("#listOfStarWarsCharacters");
+        const loadingIndicator = document.querySelector("#loadingIndicator");
+
+        fetch("https://swapi.dev/api/people").then(function (response) {
+            loadingIndicator.style.display = "none";
+
+            response.json().then(function (result) {
+                const starWarsPeople = result.results;
+                const tallSWPeople = starWarsPeople.filter(function (value) {
+                    return value.height > 180;
+                });
+
+                for (let i = 0; i < tallSWPeople.length; i++) {
+                    console.log(tallSWPeople[i].name);
+                    listOfStarWarsCharacters.innerHTML += "<li>" + tallSWPeople[i].name + "</li>"
+                }
+            })
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

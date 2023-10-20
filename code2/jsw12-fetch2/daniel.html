@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Rock Paper Scissors 101</h1>
+    <form action="">
+        <label for="options">Options</label>
+        <select name="options" id="options">
+            <option value="" disabled selected>Choose an option</option>
+        </select>
+        <button id="btn">Ok</button>
+        <h3>Winning Outcomes:</h3>
+        <ul id="results"></ul>
+    </form>
+    <script>
+        const select = document.querySelector("#options");
+        const btn = document.querySelector("#btn");
+        const results = document.querySelector("#results");
+        btn.addEventListener("click", function (event) {
+            // event.preventDefault();
+            submit();
+        });
+        fetch("https://rps101.pythonanywhere.com/api/v1/objects/all")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (result) {
+                for (let i = 0; i < result.length; i++) {
+                    select.innerHTML += `<option value= ${result[i]} >` + result[i] + "</option>";
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        function submit() {
+            const url = `https://rps101.pythonanywhere.com/api/v1/objects/${select.value}`;
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (result) {
+                    console.log(result);
+                    for (let i = 0; i < result["winning outcomes"].length; i++) {
+                        results.innerHTML += "<li>" + result["winning outcomes"][i][0] + " - " + result["winning outcomes"][i][1] + "</li>";
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    </script>
+</body>
+
+</html>

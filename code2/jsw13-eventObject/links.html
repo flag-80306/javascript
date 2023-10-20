@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="links.html" id="linkGoogle">Google</a>
+    <div id="box1">um texto qq!</div>
+
+    <script>
+        const linkGoogle = document.querySelector("#linkGoogle");
+        const box1 = document.querySelector("#box1");
+
+        linkGoogle.addEventListener("click", function (event) {
+            // event.preventDefault();
+
+            box1.textContent = "muda o texto...";
+            // window.location = "https://duckduckgo.com"
+        });
+    </script>
+</body>
+
+</html>

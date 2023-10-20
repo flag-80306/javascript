@@ -8,22 +8,47 @@
 </head>
 
 <body>
-    <table>
-        <tr>
-            <th>NAME</th>
-            <th>EMAIL</th>
-            <th>COMPANY</th>
-        </tr>
+    <select id="sortSelect">
+        <option value="default"> </option>
+        <option value="nameASC">nome ASC</option>
+        <option value="nameDESC">nome DESC</option>
+        <option value="emailASC">email ASC</option>
+        <option value="emailDESC">email DESC</option>
+    </select>
+
+    <table id="usersTable" border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>COMPANY</th>
+            </tr>
+        </thead>
     </table>
 
     <script>
-        fetch("https://swapi.dev/api/films/1")
+        function addUserRows(users) {
+            let content = "";
+            for (let i = 0; i < users.length; i++) {
+                content += `
+                <tr>
+                    <td>${users[i].name}</td>
+                    <td>${users[i].email}</td>
+                    <td>${users[i].company.name}</td>
+                </tr>
+                `
+            }
+            usersTable.innerHTML += content;
+        }
+
+        const usersTable = document.querySelector("#usersTable");
+
+        fetch("https://jsonplaceholder.typicode.com/users")
             .then(function (response) {
                 return response.json();
             })
             .then(function (result) {
-                console.log("CORreU tUDO BEM")
-                console.log(result[0].company.name);
+                addUserRows(result);
             })
             .catch(function (error) {
                 console.log(error)

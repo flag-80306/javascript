@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form id="form1">
+        <input type="text" name="q">
+        <button id="buttonGoogle">GOTO GOOGLE!</button>
+    </form>
+
+    <script>
+        const form1 = document.querySelector("#form1");
+
+        const buttonGoogle = document.querySelector("#buttonGoogle");
+
+        form1.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            buttonGoogle.textContent = "LALALA";
+
+        });
+    </script>
+</body>
+
+</html>

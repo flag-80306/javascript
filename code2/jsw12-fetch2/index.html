@@ -27,14 +27,14 @@
     </table>
 
     <script>
-        function addUserRows(users) {
+        function addUserRows() {
             let content = "";
-            for (let i = 0; i < users.length; i++) {
+            for (let i = 0; i < globalUsers.length; i++) {
                 content += `
                 <tr>
-                    <td>${users[i].name}</td>
-                    <td>${users[i].email}</td>
-                    <td>${users[i].company.name}</td>
+                    <td>${globalUsers[i].name}</td>
+                    <td>${globalUsers[i].email}</td>
+                    <td>${globalUsers[i].company.name}</td>
                 </tr>
                 `
             }
@@ -42,21 +42,45 @@
         }
 
         const usersTable = document.querySelector("#usersTable");
+        const sortSelect = document.querySelector("#sortSelect");
 
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(function (response) {
                 return response.json();
             })
             .then(function (result) {
-                addUserRows(result);
+                globalUsers = result;
+                addUserRows();
             })
             .catch(function (error) {
                 console.log(error)
             });
 
-        // Usa a API https://jsonplaceholder.typicode.com/
-        // Coloca numa "tabela" ou outro elemento semelhante
-        // o nome de todos os utilizadores, email, e nome da empresa
+        let globalUsers = [];
+
+        sortSelect.addEventListener("change", function () {
+            console.log(sortSelect.value);
+            console.log(globalUsers)
+            globalUsers.sort(function (a, b) {
+                console.log(a)
+                console.log(b)
+                let result = 0
+                if (a.name < b.name) {
+                    result = -1
+                } else if (a.name > b.name) {
+                    result = 1
+                } else {
+                    result = 0
+                }
+                console.log(result)
+                return result
+            });
+            console.log(globalUsers);
+
+            // TODO: assim so estou a acrescentar
+            // preciso limpar a tabela primeiro
+            addUserRows();
+        });
     </script>
 
 </body>

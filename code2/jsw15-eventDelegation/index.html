@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #parentDiv {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+        }
+
+        #childDiv {
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+
+        #grandchildDiv {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+
+        #fruitList {
+            width: 400px;
+            background-color: yellow;
+        }
+
+        #fruitList li {
+            border: solid 2px red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="parentDiv">
+        <div id="childDiv">
+            <div id="grandchildDiv">
+
+            </div>
+        </div>
+    </div>
+
+    <ul id="fruitList">
+        <li>BANANAS</li>
+        <li>PERAS</li>
+        <li>MACAS</li>
+    </ul>
+
+    <script>
+        const parentDiv = document.querySelector("#parentDiv");
+        const childDiv = document.querySelector("#childDiv");
+        const grandchildDiv = document.querySelector("#grandchildDiv");
+
+        parentDiv.addEventListener("click", function () {
+            alert("HELLO PAREN");
+        });
+
+        const fruitList = document.querySelector("#fruitList");
+
+        fruitList.addEventListener("click", function (event) {
+            if (event.target.tagName != "LI") {
+                return;
+            }
+
+            alert(event.target.innerHTML);
+        });
+
+    </script>
+</body>
+
+</html>

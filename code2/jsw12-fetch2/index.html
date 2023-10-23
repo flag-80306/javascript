@@ -24,6 +24,9 @@
                 <th>COMPANY</th>
             </tr>
         </thead>
+        <tbody id="usersTableBody">
+
+        </tbody>
     </table>
 
     <script>
@@ -38,10 +41,26 @@
                 </tr>
                 `
             }
-            usersTable.innerHTML += content;
+            usersTableBody.innerHTML += content;
+        }
+
+        function sortUsers(property, direction) {
+            const directionInverse = (direction == "DESC") ? -1 : 1;
+            globalUsers.sort(function (a, b) {
+                let result = 0
+                if (a[property] < b[property]) {
+                    result = -1 * directionInverse
+                } else if (a[property] > b[property]) {
+                    result = 1 * directionInverse
+                } else {
+                    result = 0
+                }
+                return result
+            });
         }
 
         const usersTable = document.querySelector("#usersTable");
+        const usersTableBody = document.querySelector("#usersTableBody");
         const sortSelect = document.querySelector("#sortSelect");
 
         fetch("https://jsonplaceholder.typicode.com/users")
@@ -59,26 +78,18 @@
         let globalUsers = [];
 
         sortSelect.addEventListener("change", function () {
-            console.log(sortSelect.value);
-            console.log(globalUsers)
-            globalUsers.sort(function (a, b) {
-                console.log(a)
-                console.log(b)
-                let result = 0
-                if (a.name < b.name) {
-                    result = -1
-                } else if (a.name > b.name) {
-                    result = 1
-                } else {
-                    result = 0
-                }
-                console.log(result)
-                return result
-            });
-            console.log(globalUsers);
-
-            // TODO: assim so estou a acrescentar
-            // preciso limpar a tabela primeiro
+            if (sortSelect.value == "default") {
+                sortUsers("id", "ASC")
+            } else if (sortSelect.value == "nameASC") {
+                sortUsers("name", "ASC")
+            } else if (sortSelect.value == "nameDESC") {
+                sortUsers("name", "DESC")
+            } else if (sortSelect.value == "emailASC") {
+                sortUsers("email", "ASC")
+            } else if (sortSelect.value == "emailDESC") {
+                sortUsers("email", "DESC")
+            }
+            usersTableBody.innerHTML = "";
             addUserRows();
         });
     </script>

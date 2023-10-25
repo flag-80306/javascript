@@ -23,11 +23,8 @@ todoList.addEventListener("click", function(event) {
     if (event.target.tagName != "BUTTON") {
         return;
     }
-    
-    // descobrir o indice do array
-    // relativo ao delete button que foi clickado
-    // o delete button especifico e o `event.target`
-    const indexToDelete = 3;
+
+    const indexToDelete = event.target.dataset.index;
     todos.splice(indexToDelete, 1);
 
     udpateListUI();
@@ -36,7 +33,7 @@ todoList.addEventListener("click", function(event) {
 function udpateListUI() {
     todoList.innerHTML = "";
     for (let i = 0; i < todos.length; i++) {
-        todoList.innerHTML += `<li>${ todos[i] } <button class="delButton">❌</button></li>`;
+        todoList.innerHTML += `<li>${ todos[i] } --> ${ i }<button data-index="${ i }" class="delButton">❌</button></li>`;
     }
 }
 

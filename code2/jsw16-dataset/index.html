@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1 id="title" data-my-attribute="123" data-name="Joe" data-whatever="lalala">Hello World!</h1>
+
+
+    <button id="button1" data-lala="nao sei">BUTTON 1</button>
+
+    <script>
+        const title = document.querySelector("#title");
+        const button1 = document.querySelector("#button1");
+        console.log(title.dataset.myAttribute);
+
+        button1.addEventListener("click", function (event) {
+            console.log(event.target.dataset)
+        })
+    </script>
+
+
+</body>
+
+</html>

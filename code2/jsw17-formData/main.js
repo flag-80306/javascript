@@ -1,55 +1,32 @@
-const data = [
-    {
-        name: "Helder",
-        email: "phelder@gmail.com",
-        address: "Porto",
-        createdAt: "descubram..."
-    },
-    {
-        name: "Joe",
-        email: "phelder@gmail.com",
-        address: "Porto",
-        createdAt: "descubram..."
-    },
-    {
-        name: "Zezito",
-        email: "phelder@gmail.com",
-        address: "Porto",
-        createdAt: "descubram..."
-    },
-]
+import userService from "./services/userService.js";
+import tableService from "./services/tableService.js";
 
-function deleteAllRows() {
-    usersTableBody.innerHTML = "";
-}
-
-function addRows() {
-    for (let i = 0; i < data.length; i++) {
-        const newTR = usersTableBody.insertRow();
-        newTR.innerHTML = `
-            <td>${data[i].email}</td>
-            <td>${data[i].name}</td>
-            <td>${data[i].address}</td>
-            <td>${data[i].createdAt}</td>
-            <td><button data-index="${i}">❌</button></td>
-        `;
-    }
-}
-
-function deleteItem(index) {
-    deleteAllRows();
-    data.splice(index, 1);
-    addRows();
-}
-
+const userForm = document.querySelector("#userForm");
 const usersTableBody = document.querySelector("#usersTableBody");
+
+userForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    
+    const userFormData = new FormData(userForm);
+    const newUser = {
+        name: userFormData.get("name"),
+        email: userFormData.get("email"),
+        address: userFormData.get("address"),
+        createdAt: new Date()
+    }
+
+    userService.addUser(newUser);
+    tableService.updateTableUI();
+});
+
 usersTableBody.addEventListener("click", function(event) {
     if (event.target.tagName != "BUTTON") {
         return;
     }
     const deleteButton = event.target;
-    deleteItem(deleteButton.dataset.index);
     
+    userService.deleteUser(deleteButton.dataset.index);
+    tableService.updateTableUI();
 });
 
-addRows()
+tableService.updateTableUI();
